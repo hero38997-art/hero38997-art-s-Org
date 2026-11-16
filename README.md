@@ -1,11 +1,66 @@
-<div align="center">
+# মেট্রো রহস্য (Train Mystery) — Online Multiplayer
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+৭ কোচের ঢাকা মেট্রো রেলের ভেতরে রিয়েল-টাইম সার্ভার-অথরিটেটিভ সোশ্যাল ডিডাকশন গেম (Among Us স্টাইল)। এতে অনলাইন মাল্টিপ্লেয়ার (Public অটো-ম্যাচ ও Private রুম) এবং অফলাইনে "বটের সাথে খেলো" — দুটি মোডই রয়েছে।
 
-  <h1>Built with AI Studio</h2>
+---
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## প্রধান বৈশিষ্ট্য
+- **সার্ভার-অথরিটেটিভ আর্কিটেকচার (২০ টিক/সেকেন্ড):** রোল নির্ধারণ, চলাচলের সীমা/দেয়াল কলিশন, কিল/চুরি কুলডাউন ও রেঞ্জ, সাক্ষী নির্ধারণ, টিকেট চেক, মিটিং ও ভোট গণনা সব কিছু সার্ভারে যাচাই হয়।
+- **গোপন রোল সুরক্ষা:** প্রতিটি প্লেয়ার শুধু নিজের `role` এবং ব্যক্তিগত `private` বার্তা (ইনস্পেক্টর চেক রেজাল্ট ও সাক্ষীর সতর্কতা) পায়। ম্যাচ শেষ হলে সবার রোল প্রকাশ হয়।
+- **Public Room (অটো-ম্যাচ):** ৪ জন হিউম্যান যোগ দিলে অথবা প্রথম প্লেয়ার ঢোকার ২০ সেকেন্ড পর বট দিয়ে খালি সিট পূরণ করে (সর্বোচ্চ ৮ জন) ম্যাচ শুরু হয়।
+- **Private Room:** `I, O, 0, 1` বাদে ৪ অক্ষরের ইউনিক কোড, হোস্টের জন্য খালি সিটে বট বসানোর অপশন এবং "শুরু করো" নিয়ন্ত্রণ।
+- **সুরক্ষা ও রি-কানেক্ট:** প্লেয়ার নাম (সর্বোচ্চ ১২ অক্ষর) ও চ্যাট (সর্বোচ্চ ৮০ অক্ষর) HTML-escaped, প্রতি কানেকশনে রেট লিমিট, স্পিড-হ্যাক প্রতিরোধ এবং ডিসকানেক্ট হলে ৩০ সেকেন্ড পর্যন্ত `rejoin` টোকেন দিয়ে ফেরত আসার সুবিধা।
+- **Client-Side Prediction & Interpolation:** নিজের মুভমেন্ট তাৎক্ষণিক দেখায় (seq reconciliation সহ) এবং অন্য প্লেয়ারদের পজিশন মসৃণভাবে ইন্টারপোলেট করে।
+- **অফলাইন বট মোড:** সার্ভার ছাড়াও একাই বটদের সাথে খেলা যায়।
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+---
 
-</div>
+## লোকালি চালানোর নিয়ম
+
+১. ডিপেন্ডেন্সি ইনস্টল করো:
+```bash
+npm install
+```
+
+২. ডেভেলপমেন্ট মোডে সার্ভার চালু করো (পোর্ট `3000`):
+```bash
+npm run dev
+```
+ব্রাউজারে যাও: `http://localhost:3000`
+
+৩. প্রোডাকশন বিল্ড ও স্টার্ট পরীক্ষা করতে:
+```bash
+npm run build
+NODE_ENV=production npm start
+```
+
+৪. ৪ জন সিমুলেটেড ক্লায়েন্ট দিয়ে পূর্ণ অনলাইন ম্যাচ টেস্ট করতে (সার্ভার চালু থাকা অবস্থায়):
+```bash
+node scripts/test-multiplayer.mjs
+```
+
+---
+
+## Render-এ ডিপ্লয় করার ধাপ (Free Tier)
+
+1. প্রজেক্টটি GitHub রিপোজিটরিতে পুশ করো।
+2. [Render Dashboard](https://dashboard.render.com)-এ গিয়ে **New + → Web Service** সিলেক্ট করো এবং রিপোজিটরি কানেক্ট করো।
+3. নিচের সেটিংস দাও:
+   - **Environment:** `Node`
+   - **Build Command:** `npm install && npm run build`
+   - **Start Command:** `npm start`
+4. **Environment Variables** সেকশনে যোগ করো:
+   - `NODE_ENV` = `production`
+   - *(Render স্বয়ংক্রিয়ভাবে `PORT` ভ্যারিয়েবল সরবরাহ করে, আর সার্ভার `process.env.PORT || 3000` ব্যবহার করে।)*
+5. **Create Web Service** ক্লিক করো। ডিপ্লয় শেষ হলে Render-এর HTTPS URL-এ `wss://` সহ সরাসরি মাল্টিপ্লেয়ার চলবে।
+
+---
+
+## Railway-তে ডিপ্লয় করার ধাপ (Free Tier)
+
+1. [Railway](https://railway.app)-তে গিয়ে **New Project → Deploy from GitHub repo** বেছে নাও।
+2. প্রজেক্ট Settings → Build & Deploy-এ নিশ্চিত করো:
+   - **Build Command:** `npm install && npm run build`
+   - **Start Command:** `npm start`
+3. **Variables** ট্যাবে `NODE_ENV=production` যোগ করো (`PORT` স্বয়ংক্রিয়ভাবে সেট থাকে)।
+4. Settings → Networking থেকে **Generate Domain** ক্লিক করলে লাইভ URL ও WebSocket (`/ws`) চালু হয়ে যাবে।

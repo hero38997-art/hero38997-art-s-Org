@@ -1,0 +1,6 @@
+{
+  "name": "Platform X",
+  "description": "ঢাকা মেট্রো রেলের ভেতরে অ্যামাং-আস স্টাইলের সামাজিক গোয়েন্দা ও রহস্যভেদী গেম।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
