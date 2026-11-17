@@ -14,8 +14,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #070b14;
-    color: #eef2f8;
+    background-color: #111214;
+    color: #f3efe6;
     font-family: var(--font-sans);
     touch-action: none;
     -webkit-tap-highlight-color: transparent;
@@ -31,16 +31,17 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Custom scrollbar for meeting chat */
+/* Custom scrollbar for game modals & chat */
 .metro-scroll::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 .metro-scroll::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(17, 18, 20, 0.75);
   border-radius: 3px;
 }
 .metro-scroll::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.35);
+  background: rgba(161, 158, 150, 0.32);
   border-radius: 3px;
 }
+

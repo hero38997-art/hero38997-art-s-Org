@@ -94,28 +94,28 @@ export const TaskMiniGame: React.FC<TaskMiniGameProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-30 flex items-center justify-center p-3 bg-[#040812]/82 backdrop-blur-sm"
+      className="fixed inset-0 z-30 flex items-center justify-center p-3 bg-[#0a0b0d]/82 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="w-full max-w-lg bg-[#080f20]/96 border border-[#f5b73d]/30 rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.75)] max-h-[calc(100dvh-16px)] overflow-hidden flex flex-col">
-        <div className="h-1 bg-gradient-to-r from-[#1f9d63] via-[#f5b73d] to-[#1f9d63] shrink-0" />
+      <div className="w-full max-w-lg bg-[#1a1b1f] border border-[#343741] rounded-xl shadow-[0_24px_64px_rgba(0,0,0,0.85)] max-h-[calc(100dvh-16px)] overflow-hidden flex flex-col">
+        <div className="px-4 py-2.5 sm:px-5 sm:py-3 bg-[#212329] border-b border-[#343741] flex items-center justify-between shrink-0">
+          <h2 className="text-base sm:text-lg font-bold text-[#f3efe6] flex items-center gap-2">
+            <span className="w-1 h-4 rounded-xs bg-[#e59e24] shrink-0" aria-hidden="true" />
+            <TitleIcon className="w-5 h-5 text-[#e59e24]" />
+            <span>{title}</span>
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1.5 rounded-lg bg-[#2a2d35] hover:bg-[#353944] border border-[#3c404d] text-[#d5d1c8] hover:text-white cursor-pointer transition-colors"
+            aria-label="বন্ধ করো"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
         <div className="p-3.5 sm:p-5 overflow-y-auto metro-scroll flex-1 min-h-0">
-          <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-slate-800">
-            <h2 className="text-base sm:text-lg font-bold text-slate-100 flex items-center gap-2">
-              <TitleIcon className="w-5 h-5 text-[#f5b73d]" />
-              <span>{title}</span>
-            </h2>
-            <button
-              type="button"
-              onClick={onClose}
-              className="p-1.5 rounded-lg bg-[#101c36] border border-slate-700/70 text-slate-300 hover:text-white cursor-pointer transition-colors"
-              aria-label="বন্ধ করো"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
 
         {modal.kind === 'task' && (
           <TaskBody
@@ -219,7 +219,7 @@ const SwipeGame: React.FC<{ onError: (t: string) => void; onDone: () => void }> 
       </p>
       <div
         ref={trackRef}
-        className="relative h-24 rounded-xl bg-[#090e1b] border border-[#2c3a57] overflow-hidden touch-none"
+        className="relative h-24 rounded-xl bg-[#111214] border border-[#2e313a] overflow-hidden touch-none"
       >
         <div className="absolute inset-x-0 top-10 h-3 bg-[#1e293b]" />
         <div
@@ -321,7 +321,7 @@ const WiresGame: React.FC<{ onError: (t: string) => void; onDone: () => void }> 
       <p className="text-xs text-slate-400 text-center mb-2">
         বাঁ দিকের ৫টি তার টেনে এনে ডান দিকের একই রঙের টার্মিনালে জোড়া দাও (অথবা ট্যাপ করো)।
       </p>
-      <div className="bg-[#090e1b] border border-[#2c3a57] rounded-xl p-2">
+      <div className="bg-[#111214] border border-[#2e313a] rounded-xl p-2">
         <svg
           ref={svgRef}
           viewBox="0 0 320 230"
@@ -509,7 +509,7 @@ const CodeGame: React.FC<{ onError: (t: string) => void; onDone: () => void }> =
       <div className="text-3xl font-mono-num tracking-[0.22em] text-[#f5b73d] font-bold my-2">
         {bn(code)}
       </div>
-      <div className="min-h-[44px] text-2xl font-mono-num tracking-[0.22em] bg-[#090e1b] border border-[#2c3a57] rounded-xl py-2 mb-3">
+      <div className="min-h-[44px] text-2xl font-mono-num tracking-[0.22em] bg-[#111214] border border-[#2e313a] rounded-xl py-2 mb-3">
         {bn(cur)}
       </div>
       <div className="grid grid-cols-3 gap-2">
@@ -518,7 +518,7 @@ const CodeGame: React.FC<{ onError: (t: string) => void; onDone: () => void }> =
             key={k}
             type="button"
             onClick={() => pressKey(k)}
-            className="py-2.5 rounded-xl bg-[#1c2844] hover:bg-[#27375d] text-white font-bold text-lg cursor-pointer"
+            className="py-2.5 rounded-xl bg-[#23252b] hover:bg-[#2d3039] text-white font-bold text-lg cursor-pointer"
           >
             {k === 'DEL' ? 'মুছো' : bn(k)}
           </button>
@@ -579,7 +579,7 @@ const LightsPuzzle: React.FC<{ onDone: () => void; simpleMode?: boolean }> = ({
             <button
               type="button"
               onClick={() => toggle(i)}
-              className="w-11 py-3 rounded-xl bg-[#1c2844] hover:bg-[#28385e] text-white font-bold cursor-pointer flex items-center justify-center"
+              className="w-11 py-3 rounded-xl bg-[#23252b] hover:bg-[#2d3039] border border-[#343741] text-[#f3efe6] font-bold cursor-pointer flex items-center justify-center"
               aria-label={`সুইচ ${i + 1}`}
             >
               {v ? <ArrowUp className="w-4 h-4" /> : <ArrowDown className="w-4 h-4" />}
@@ -587,7 +587,7 @@ const LightsPuzzle: React.FC<{ onDone: () => void; simpleMode?: boolean }> = ({
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-between gap-2 text-xs text-slate-400">
+      <div className="flex items-center justify-between gap-2 text-xs text-[#a19e96]">
         <span>
           {simpleMode
             ? 'সবগুলো মেইন ব্রেকার সুইচ চালু (সবুজ) করো।'
@@ -597,7 +597,7 @@ const LightsPuzzle: React.FC<{ onDone: () => void; simpleMode?: boolean }> = ({
           <button
             type="button"
             onClick={() => setOn(initial)}
-            className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#1c2844] text-slate-200 hover:bg-[#27375d] cursor-pointer"
+            className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#23252b] border border-[#343741] text-[#f3efe6] hover:bg-[#2d3039] cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             <span>রিসেট</span>
@@ -729,10 +729,10 @@ const LuggageGame: React.FC<{ onError: (t: string) => void; onDone: () => void }
               onClick={() => moveBagTo(side)}
               className={`min-h-[96px] rounded-xl border-2 p-2.5 flex flex-col justify-between cursor-pointer transition-colors ${
                 sel !== null
-                  ? 'border-[#f5b73d] bg-[#162038]'
+                  ? 'border-[#e59e24] bg-[#25231f]'
                   : w === 25
-                  ? 'border-[#43c07a] bg-[#132924]'
-                  : 'border-[#2c3a57] bg-[#090e1b]'
+                  ? 'border-[#3cc280] bg-[#16261f]'
+                  : 'border-[#2e313a] bg-[#111214]'
               }`}
             >
               <div className="flex justify-between items-center text-xs font-bold text-slate-200 mb-2">
@@ -850,20 +850,20 @@ const ThrottleGame: React.FC<{ onError: (t: string) => void; onDone: () => void 
               key={idx}
               className={`p-2 rounded-xl border ${
                 isLocked
-                  ? 'border-[#43c07a] bg-[#132924]'
+                  ? 'border-[#3cc280] bg-[#16261f]'
                   : isCur
-                  ? 'border-[#f5b73d] bg-[#10182b]'
-                  : 'border-[#253352] bg-[#090e1b] opacity-60'
+                  ? 'border-[#e59e24] bg-[#25231f]'
+                  : 'border-[#2e313a] bg-[#111214] opacity-60'
               }`}
             >
               <svg width={88} height={88} viewBox="0 0 88 88">
-                <circle cx={44} cy={44} r={34} fill="none" stroke="#1e293b" strokeWidth={8} />
+                <circle cx={44} cy={44} r={34} fill="none" stroke="#2a2d35" strokeWidth={8} />
                 {/* Emerald target marker */}
                 <circle
                   cx={44 + Math.cos(tRad) * 34}
                   cy={44 + Math.sin(tRad) * 34}
                   r={7}
-                  fill="#22c55e"
+                  fill="#2d9f68"
                 />
                 {/* Spinning needle */}
                 <line
@@ -871,13 +871,13 @@ const ThrottleGame: React.FC<{ onError: (t: string) => void; onDone: () => void 
                   y1={44}
                   x2={44 + Math.cos(nRad) * 32}
                   y2={44 + Math.sin(nRad) * 32}
-                  stroke={isLocked ? '#4ade80' : '#f5b73d'}
+                  stroke={isLocked ? '#3cc280' : '#e59e24'}
                   strokeWidth={3.5}
                   strokeLinecap="round"
                 />
-                <circle cx={44} cy={44} r={5} fill="#cbd5e1" />
+                <circle cx={44} cy={44} r={5} fill="#d5d1c8" />
               </svg>
-              <div className="text-[11px] font-bold text-slate-300">রিং {bn(idx + 1)}</div>
+              <div className="text-[11px] font-bold text-[#d5d1c8]">রিং {bn(idx + 1)}</div>
             </div>
           );
         })}
@@ -885,7 +885,7 @@ const ThrottleGame: React.FC<{ onError: (t: string) => void; onDone: () => void 
       <button
         type="button"
         onClick={tryLock}
-        className="w-full py-3.5 rounded-xl bg-[#f5b73d] hover:bg-[#fbbf24] text-[#090e1b] font-bold text-base cursor-pointer flex items-center justify-center gap-2"
+        className="w-full py-3.5 rounded-lg bg-[#e59e24] hover:bg-[#f0ae35] text-[#111214] font-bold text-base cursor-pointer flex items-center justify-center gap-2 shadow-[0_3px_0_#9a650b]"
       >
         <Lock className="w-4 h-4" />
         <span>রিং {bn(stage + 1)} লক করো</span>
@@ -922,7 +922,7 @@ const CanteenGame: React.FC<{ onError: (t: string) => void; onDone: () => void }
                   ? 'bg-[#19352b] border-[#43c07a] text-[#43c07a]'
                   : i === step
                   ? 'bg-[#2a2312] border-[#f5b73d] text-[#f5b73d]'
-                  : 'bg-[#090e1b] border-[#2c3a57] text-slate-400'
+                  : 'bg-[#111214] border-[#2e313a] text-[#a19e96]'
               }`}
             >
               <OIcon className="w-3.5 h-3.5" />
@@ -948,7 +948,7 @@ const CanteenGame: React.FC<{ onError: (t: string) => void; onDone: () => void }
                   onError('ভুল আইটেম! শুরু থেকে সঠিক ক্রমে দাও');
                 }
               }}
-              className="py-3.5 rounded-xl bg-[#1c2844] hover:bg-[#27385f] text-white font-bold text-sm cursor-pointer flex items-center justify-center gap-2"
+              className="py-3.5 rounded-xl bg-[#23252b] hover:bg-[#2d3039] border border-[#343741] text-[#f3efe6] font-bold text-sm cursor-pointer flex items-center justify-center gap-2"
             >
               <ItIcon className="w-4 h-4 text-[#f5b73d]" />
               <span>{it.label}</span>
@@ -1047,7 +1047,7 @@ const SignalGame: React.FC<{ onError: (t: string) => void; onDone: () => void }>
 
       <div className="grid grid-cols-2 gap-4 items-center">
         {/* Monitor (Playback Display) */}
-        <div className="bg-[#090e1b] border border-[#2c3a57] rounded-xl p-2.5">
+        <div className="bg-[#111214] border border-[#2e313a] rounded-xl p-2.5">
           <div className="text-[10px] text-slate-400 mb-1.5">সিগন্যাল মনিটর</div>
           <div className="grid grid-cols-3 gap-1.5">
             {Array.from({ length: 9 }).map((_, idx) => (
@@ -1064,7 +1064,7 @@ const SignalGame: React.FC<{ onError: (t: string) => void; onDone: () => void }>
         </div>
 
         {/* Interactive Keypad */}
-        <div className="bg-[#090e1b] border border-[#2c3a57] rounded-xl p-2.5">
+        <div className="bg-[#111214] border border-[#2e313a] rounded-xl p-2.5">
           <div className="text-[10px] text-slate-400 mb-1.5">ইনপুট প্যাড</div>
           <div className="grid grid-cols-3 gap-1.5">
             {Array.from({ length: 9 }).map((_, idx) => {
@@ -1080,7 +1080,7 @@ const SignalGame: React.FC<{ onError: (t: string) => void; onDone: () => void }>
                       ? pressedCell?.ok
                         ? 'bg-[#4ade80] border-white'
                         : 'bg-[#ef4444] border-white'
-                      : 'bg-[#1c2844] hover:bg-[#2a3b63] border-[#33466d]'
+                      : 'bg-[#23252b] hover:bg-[#2d3039] border-[#3c404d]'
                   }`}
                   aria-label={`সিগন্যাল ঘর ${idx + 1}`}
                 />
@@ -1229,7 +1229,7 @@ const BioScanGame: React.FC<{ world: GameWorld; onDone: () => void }> = ({ world
       <p className="text-xs text-slate-400">
         স্ক্যান শুরু করলে আশেপাশের যাত্রীরা সবুজ লেজার রশ্মি দেখতে পাবে (নিরপরাধ প্রমাণের ভিজ্যুয়াল টাস্ক!)
       </p>
-      <div className="bg-[#090e1b] border border-[#2c3a57] rounded-xl p-4">
+      <div className="bg-[#111214] border border-[#2e313a] rounded-xl p-4">
         <div className="text-sm font-bold text-[#34d399] mb-2">
           {scanning ? `স্ক্যানিং চলছে… ${bn(pct)}%` : 'স্ক্যানার প্রস্তুত'}
         </div>
@@ -1379,7 +1379,7 @@ const CctvMonitor: React.FC<{ world: GameWorld }> = ({ world }) => {
               setCamIdx(idx);
             }}
             className={`py-2 px-2 rounded-xl text-xs font-bold cursor-pointer ${
-              camIdx === idx ? 'bg-[#38bdf8] text-[#091124]' : 'bg-[#1c2844] text-slate-200'
+              camIdx === idx ? 'bg-[#e59e24] text-[#111214]' : 'bg-[#23252b] border border-[#343741] text-[#f3efe6]'
             }`}
           >
             {c.name.split(' · ')[0]}
@@ -1399,22 +1399,22 @@ const AdminRadar: React.FC<{ world: GameWorld }> = ({ world }) => {
 
   return (
     <div className="space-y-3">
-      <p className="text-xs text-slate-400 text-center">
+      <p className="text-xs text-[#a19e96] text-center">
         প্রতিটি কোচে বর্তমানে কতজন জীবিত যাত্রী অবস্থান করছে:
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {COACH_SHORT.map((name, i) => (
           <div
             key={i}
-            className="bg-[#090e1b] border border-[#2c3a57] rounded-xl p-2.5 flex flex-col justify-between"
+            className="bg-[#111214] border border-[#2e313a] rounded-xl p-2.5 flex flex-col justify-between"
           >
-            <div className="text-xs font-bold text-slate-300">{name}</div>
+            <div className="text-xs font-bold text-[#f3efe6]">{name}</div>
             <div className="flex items-center gap-1.5 mt-2 flex-wrap min-h-[20px]">
               {counts[i] === 0 ? (
-                <span className="text-[11px] text-slate-500">খালি</span>
+                <span className="text-[11px] text-[#73706a]">খালি</span>
               ) : (
                 Array.from({ length: counts[i] }).map((_, k) => (
-                  <span key={k} className="w-3.5 h-3.5 rounded-full bg-[#4ade80] inline-block" />
+                  <span key={k} className="w-3.5 h-3.5 rounded-full bg-[#3cc280] inline-block" />
                 ))
               )}
             </div>
@@ -1437,24 +1437,24 @@ const BlueprintMap: React.FC<{
 
   return (
     <div className="space-y-3">
-      <div className="relative bg-[#090e1b] border border-[#2c3a57] rounded-xl p-3 overflow-x-auto">
+      <div className="relative bg-[#111214] border border-[#2e313a] rounded-xl p-3 overflow-x-auto">
         <div className="grid grid-cols-7 gap-1 min-w-[440px]">
           {COACH_SHORT.map((nm, i) => (
             <div
               key={i}
               className={`rounded-lg p-2 border text-center ${
                 myCoach === i
-                  ? 'bg-[#192847] border-[#f5b73d]'
-                  : 'bg-[#111a2f] border-[#253352]'
+                  ? 'bg-[#25231f] border-[#e59e24]'
+                  : 'bg-[#1a1b1f] border-[#2e313a]'
               }`}
             >
-              <div className="text-[10px] font-bold text-slate-200 leading-tight">{nm}</div>
+              <div className="text-[10px] font-bold text-[#f3efe6] leading-tight">{nm}</div>
               <div className="mt-1.5 flex justify-center gap-1 flex-wrap min-h-[14px]">
                 {me.tasks.map((t, ti) =>
                   !t.done && t.spot.coach === i ? (
                     <span
                       key={ti}
-                      className="w-3 h-3 rounded-full bg-[#f5b73d] text-[#090e1b] text-[9px] font-black flex items-center justify-center"
+                      className="w-3 h-3 rounded-full bg-[#e59e24] text-[#111214] text-[9px] font-black flex items-center justify-center"
                     >
                       !
                     </span>

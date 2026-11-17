@@ -59,12 +59,12 @@ export const EjectionCutscene: React.FC<EjectionCutsceneProps> = ({ world }) => 
 
       c.setTransform(dpr, 0, 0, dpr, 0, 0);
       const g = c.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, '#0a1230');
-      g.addColorStop(1, '#22335e');
+      g.addColorStop(0, '#0d0e11');
+      g.addColorStop(1, '#1f2229');
       c.fillStyle = g;
       c.fillRect(0, 0, W, H);
 
-      c.fillStyle = 'rgba(255,255,255,0.65)';
+      c.fillStyle = 'rgba(243,239,230,0.6)';
       for (let i = 0; i < 46; i++) {
         c.fillRect(hash(i * 3.1) * W, hash(i * 7.7) * H * 0.35, 1.7, 1.7);
       }
@@ -73,9 +73,9 @@ export const EjectionCutscene: React.FC<EjectionCutsceneProps> = ({ world }) => 
         const bw = W / 12;
         const bx = i * bw - 14;
         const bh = H * (0.1 + hash(i * 5.3) * 0.2);
-        c.fillStyle = '#0f1830';
+        c.fillStyle = '#131418';
         c.fillRect(bx, H * 0.66 - bh, bw - 6, bh);
-        c.fillStyle = 'rgba(255,213,120,0.48)';
+        c.fillStyle = 'rgba(229,158,36,0.35)';
         for (let r = 0; r < bh / 16 - 1; r++) {
           for (let q = 0; q < 4; q++) {
             if (hash(i * 31 + r * 5.7 + q * 2.3) > 0.55) {
@@ -107,7 +107,7 @@ export const EjectionCutscene: React.FC<EjectionCutsceneProps> = ({ world }) => 
       c.fillRect(-W * 4, top, W * 9, bot - top);
       c.fillStyle = '#4a5468';
       c.fillRect(-W * 4, top - H * 0.03, W * 9, H * 0.03);
-      c.fillStyle = '#1f9d63';
+      c.fillStyle = '#2d9f68';
       c.fillRect(-W * 4, H * 0.58, W * 9, H * 0.04);
       c.fillStyle = '#39414f';
       c.fillRect(-W * 4, bot - H * 0.03, W * 9, H * 0.03);
@@ -162,17 +162,17 @@ export const EjectionCutscene: React.FC<EjectionCutsceneProps> = ({ world }) => 
       c.fillStyle = '#8a95a8';
       c.fillRect(dx - dw / 2 - 3, H * 0.24, 3, H * 0.47);
       c.fillRect(dx + dw / 2, H * 0.24, 3, H * 0.47);
-      c.fillStyle = open > 0.1 ? '#43c07a' : '#ef5350';
+      c.fillStyle = open > 0.1 ? '#3cc280' : '#d9483b';
       c.beginPath();
       c.arc(dx, H * 0.215, 5, 0, Math.PI * 2);
       c.fill();
 
       const pg = c.createLinearGradient(0, bot, 0, H);
-      pg.addColorStop(0, '#2f3648');
-      pg.addColorStop(1, '#171b27');
+      pg.addColorStop(0, '#2a2d35');
+      pg.addColorStop(1, '#16181c');
       c.fillStyle = pg;
       c.fillRect(0, bot, W, H - bot);
-      c.fillStyle = '#f5b73d';
+      c.fillStyle = '#e59e24';
       c.fillRect(0, bot + H * 0.035, W, 5);
       c.fillStyle = 'rgba(255,255,255,0.05)';
       for (let i = 0; i < 10; i++) c.fillRect((i * W) / 9, bot, 2, H - bot);
@@ -183,7 +183,7 @@ export const EjectionCutscene: React.FC<EjectionCutsceneProps> = ({ world }) => 
       c.fillStyle = '#555d70';
       c.fillRect(W / 2 - 100, 0, 4, H * 0.04);
       c.fillRect(W / 2 + 96, 0, 4, H * 0.04);
-      c.fillStyle = '#0f6b45';
+      c.fillStyle = '#186b45';
       rr(c, W / 2 - 130, H * 0.04, 260, H * 0.075, 10);
       c.fill();
       c.fillStyle = '#fff';
@@ -204,7 +204,7 @@ export const EjectionCutscene: React.FC<EjectionCutsceneProps> = ({ world }) => 
   const isFaker = out.role === 'faker';
 
   return (
-    <div className="fixed inset-0 z-40 bg-[#050810]">
+    <div className="fixed inset-0 z-40 bg-[#0d0e11]">
       <canvas ref={cvRef} className="absolute inset-0 w-full h-full" />
       <div className="absolute left-0 right-0 bottom-[9%] text-center px-4 text-xl sm:text-2xl font-bold drop-shadow-[0_2px_8px_#000]">
         {el < 4.6 ? (

@@ -56,23 +56,21 @@ export const IntroModal: React.FC<{ world: GameWorld; onBegin: () => void }> = (
   }, [revealed, onBegin, world.isOnline]);
 
   return (
-    <div className="fixed inset-0 z-30 flex items-center justify-center p-2.5 sm:p-4 bg-[#040812]/88 backdrop-blur-sm overflow-hidden">
-      <div className="w-full max-w-md max-h-[calc(100dvh-20px)] bg-[#080f20]/96 border border-[#f5b73d]/30 rounded-2xl overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.75)] flex flex-col">
-        <div className="h-1 bg-gradient-to-r from-[#1f9d63] via-[#f5b73d] to-[#1f9d63] shrink-0" />
-
+    <div className="fixed inset-0 z-30 flex items-center justify-center p-2.5 sm:p-4 bg-[#0a0b0d]/85 backdrop-blur-sm overflow-hidden">
+      <div className="w-full max-w-md max-h-[calc(100dvh-20px)] bg-[#1a1b1f] border border-[#343741] rounded-xl overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,0.85)] flex flex-col">
         <div className="p-4 sm:p-6 text-center space-y-3 sm:space-y-4 overflow-y-auto metro-scroll flex-1 min-h-0">
           {!revealed ? (
             <>
-              <div className="flex items-center justify-between text-[11px] font-mono tracking-wider uppercase text-[#f5b73d]/85 border-b border-slate-800 pb-2">
+              <div className="flex items-center justify-between text-[11px] font-mono tracking-wider uppercase text-[#e59e24] border-b border-[#2e313a] pb-2">
                 <span>DHAKA METRO PASS</span>
                 <span>CONFIDENTIAL</span>
               </div>
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-[#0c162d] border border-[#f5b73d]/35 mx-auto flex items-center justify-center">
-                <Ticket className="w-7 h-7 sm:w-9 sm:h-9 text-[#f5b73d]" />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-[#23252b] border border-[#3c404d] mx-auto flex items-center justify-center">
+                <Ticket className="w-7 h-7 sm:w-9 sm:h-9 text-[#e59e24]" />
               </div>
               <div className="space-y-1">
-                <h2 className="text-xl sm:text-2xl font-bold text-white">তোমার গোপন টিকেট</h2>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#f3efe6]">তোমার গোপন টিকেট</h2>
+                <p className="text-xs sm:text-sm text-[#d5d1c8] leading-relaxed">
                   স্টেশনে ওঠার সময় তোমার গোপন ভূমিকা নির্ধারিত হয়েছে। অন্য কেউ যেন স্ক্রিন না দেখে।
                 </p>
               </div>
@@ -82,7 +80,7 @@ export const IntroModal: React.FC<{ world: GameWorld; onBegin: () => void }> = (
                   soundEngine.sfx('role');
                   setRevealed(true);
                 }}
-                className="w-full py-3 rounded-xl bg-[#f5b73d] hover:bg-[#ffc34d] text-[#08101e] font-bold text-sm sm:text-base cursor-pointer flex items-center justify-center gap-2 transition-colors"
+                className="w-full py-3 rounded-lg bg-[#e59e24] hover:bg-[#f0ae35] text-[#111214] font-bold text-sm sm:text-base cursor-pointer flex items-center justify-center gap-2 transition-colors shadow-[0_3px_0_#9a650b]"
               >
                 <Eye className="w-5 h-5" />
                 <span>রোল দেখো</span>
@@ -90,12 +88,12 @@ export const IntroModal: React.FC<{ world: GameWorld; onBegin: () => void }> = (
             </>
           ) : (
             <>
-              <div className="flex items-center justify-between text-[11px] font-mono tracking-wider uppercase text-slate-400 border-b border-slate-800 pb-2">
+              <div className="flex items-center justify-between text-[11px] font-mono tracking-wider uppercase text-[#a19e96] border-b border-[#2e313a] pb-2">
                 <span>BOARDING CLEARANCE</span>
-                <span className="text-[#f5b73d] font-semibold">{seatLabel(me.seat)}</span>
+                <span className="text-[#e59e24] font-semibold">{seatLabel(me.seat)}</span>
               </div>
               <div
-                className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl mx-auto flex items-center justify-center border"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl mx-auto flex items-center justify-center border"
                 style={{
                   backgroundColor: `${info.color}1c`,
                   borderColor: `${info.color}55`,
@@ -107,17 +105,17 @@ export const IntroModal: React.FC<{ world: GameWorld; onBegin: () => void }> = (
                 <h2 className="text-xl sm:text-2xl font-bold" style={{ color: info.color }}>
                   {info.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{info.desc}</p>
+                <p className="text-xs sm:text-sm text-[#d5d1c8] leading-relaxed">{info.desc}</p>
               </div>
               {me.role === 'faker' && allies.length > 0 && (
-                <div className="py-2 border-y border-[#ef5350]/30 text-xs sm:text-sm text-[#ef5350] font-semibold">
+                <div className="py-2 border-y border-[#d9483b]/35 text-xs sm:text-sm text-[#e86b5e] font-semibold">
                   সঙ্গী চোর: {allies.map((a) => a.name).join(', ')}
                 </div>
               )}
               <button
                 type="button"
                 onClick={onBegin}
-                className="w-full py-3 rounded-xl bg-[#f5b73d] hover:bg-[#ffc34d] text-[#08101e] font-bold text-sm sm:text-base cursor-pointer flex items-center justify-center gap-2 transition-colors"
+                className="w-full py-3 rounded-lg bg-[#e59e24] hover:bg-[#f0ae35] text-[#111214] font-bold text-sm sm:text-base cursor-pointer flex items-center justify-center gap-2 transition-colors shadow-[0_3px_0_#9a650b]"
               >
                 <TrainFront className="w-5 h-5" />
                 <span>ট্রেন ছাড়ুক</span>
@@ -150,57 +148,53 @@ export const EndGameModal: React.FC<{
   const iWin = fakersWon === (me.role === 'faker');
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center p-3 sm:p-4 bg-[#040812]/88 backdrop-blur-sm overflow-hidden">
-      <div className="w-full max-w-md max-h-[calc(100dvh-24px)] bg-[#080f20]/96 border border-[#f5b73d]/30 rounded-2xl overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.75)] flex flex-col">
+    <div className="fixed inset-0 z-40 flex items-center justify-center p-3 sm:p-4 bg-[#0a0b0d]/85 backdrop-blur-sm overflow-hidden">
+      <div className="w-full max-w-md max-h-[calc(100dvh-24px)] bg-[#1a1b1f] border border-[#343741] rounded-xl overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,0.85)] flex flex-col">
         <div
-          className={`h-1 shrink-0 bg-gradient-to-r ${
-            fakersWon
-              ? 'from-[#ef5350] via-[#f5b73d] to-[#ef5350]'
-              : 'from-[#1f9d63] via-[#f5b73d] to-[#1f9d63]'
-          }`}
+          className={`h-1.5 shrink-0 ${fakersWon ? 'bg-[#d9483b]' : 'bg-[#2d9f68]'}`}
         />
 
         <div className="p-5 text-center space-y-3 overflow-hidden flex flex-col">
-          <div className="flex items-center justify-between text-[11px] font-mono tracking-wider uppercase text-slate-400 border-b border-slate-800 pb-2 shrink-0">
+          <div className="flex items-center justify-between text-[11px] font-mono tracking-wider uppercase text-[#a19e96] border-b border-[#2e313a] pb-2 shrink-0">
             <span>FINAL ARRIVAL LOG</span>
-            <span className={iWin ? 'text-[#43c07a] font-bold' : 'text-[#ef5350] font-bold'}>
+            <span className={iWin ? 'text-[#3cc280] font-bold' : 'text-[#e86b5e] font-bold'}>
               {iWin ? 'VICTORY' : 'DEFEAT'}
             </span>
           </div>
 
           <div
             className={`w-12 h-12 rounded-xl mx-auto flex items-center justify-center border shrink-0 ${
-              iWin ? 'bg-[#1f9d63]/15 border-[#43c07a]/45' : 'bg-[#ef5350]/15 border-[#ef5350]/45'
+              iWin ? 'bg-[#2d9f68]/15 border-[#3cc280]/45' : 'bg-[#d9483b]/15 border-[#d9483b]/45'
             }`}
           >
             {iWin ? (
-              <Trophy className="w-7 h-7 text-[#f5b73d]" />
+              <Trophy className="w-7 h-7 text-[#e59e24]" />
             ) : (
-              <HeartCrack className="w-7 h-7 text-[#ef5350]" />
+              <HeartCrack className="w-7 h-7 text-[#e86b5e]" />
             )}
           </div>
 
           <div className="space-y-0.5 shrink-0">
-            <h2 className="text-xl font-bold text-white flex items-center justify-center gap-2">
+            <h2 className="text-xl font-bold text-[#f3efe6] flex items-center justify-center gap-2">
               {fakersWon ? (
                 <>
-                  <ShieldAlert className="w-5 h-5 text-[#ef5350]" />
+                  <ShieldAlert className="w-5 h-5 text-[#e86b5e]" />
                   <span>চোরেরা জিতেছে!</span>
                 </>
               ) : (
                 <>
-                  <TrainFront className="w-5 h-5 text-[#43c07a]" />
+                  <TrainFront className="w-5 h-5 text-[#3cc280]" />
                   <span>যাত্রীরা জিতেছে!</span>
                 </>
               )}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300">{world.endReason}</p>
-            <div className={`text-xs sm:text-sm font-bold pt-0.5 ${iWin ? 'text-[#43c07a]' : 'text-[#ef5350]'}`}>
+            <p className="text-xs sm:text-sm text-[#d5d1c8]">{world.endReason}</p>
+            <div className={`text-xs sm:text-sm font-bold pt-0.5 ${iWin ? 'text-[#3cc280]' : 'text-[#e86b5e]'}`}>
               {iWin ? 'অভিনন্দন! তুমি জিতেছো!' : 'এবার তুমি হেরেছো।'}
             </div>
           </div>
 
-          <div className="border-y border-slate-800 divide-y divide-slate-800/80 text-left overflow-y-auto metro-scroll min-h-0">
+          <div className="border-y border-[#2e313a] divide-y divide-[#282a32] text-left overflow-y-auto metro-scroll min-h-0">
             {world.players.map((p) => {
               const rm = roleMeta(p.role);
               const PIcon = rm.Icon;
@@ -210,7 +204,7 @@ export const EndGameModal: React.FC<{
                     className="w-3 h-3 rounded-full shrink-0 border border-white/25"
                     style={{ backgroundColor: p.color }}
                   />
-                  <span className="flex-1 font-semibold text-slate-100 truncate">
+                  <span className="flex-1 font-semibold text-[#f3efe6] truncate">
                     {p.name}
                     {p.isMe ? ' (তুমি)' : ''}
                   </span>
@@ -231,7 +225,7 @@ export const EndGameModal: React.FC<{
               <button
                 type="button"
                 onClick={onPlayAgain}
-                className="w-full py-3 rounded-xl bg-[#f5b73d] hover:bg-[#ffc34d] text-[#08101e] font-bold text-sm cursor-pointer flex items-center justify-center gap-2 transition-colors"
+                className="w-full py-3 rounded-lg bg-[#e59e24] hover:bg-[#f0ae35] text-[#111214] font-bold text-sm cursor-pointer flex items-center justify-center gap-2 transition-colors shadow-[0_3px_0_#9a650b]"
               >
                 <RotateCcw className="w-4 h-4" />
                 <span>আবার খেলো</span>
@@ -242,7 +236,7 @@ export const EndGameModal: React.FC<{
               <button
                 type="button"
                 onClick={onReturnTeamLobby}
-                className="w-full py-3 rounded-xl bg-[#f5b73d] hover:bg-[#ffc34d] text-[#08101e] font-bold text-sm cursor-pointer flex items-center justify-center gap-2 transition-colors"
+                className="w-full py-3 rounded-lg bg-[#e59e24] hover:bg-[#f0ae35] text-[#111214] font-bold text-sm cursor-pointer flex items-center justify-center gap-2 transition-colors shadow-[0_3px_0_#9a650b]"
               >
                 <RotateCcw className="w-4 h-4" />
                 <span>একই টিমে আবার খেলো</span>
@@ -250,7 +244,7 @@ export const EndGameModal: React.FC<{
             )}
 
             {world.isOnline && isTeamRoom && !canReturnTeamLobby && (
-              <div className="text-[11px] text-slate-400 pb-0.5">
+              <div className="text-[11px] text-[#a19e96] pb-0.5">
                 টিম লিডার চাইলে সবাইকে একসাথে টিম লবিতে ফেরাতে পারবে…
               </div>
             )}
@@ -258,10 +252,10 @@ export const EndGameModal: React.FC<{
             <button
               type="button"
               onClick={onBackToMenu}
-              className={`w-full py-3 rounded-xl font-bold text-sm cursor-pointer transition-colors ${
+              className={`w-full py-3 rounded-lg font-bold text-sm cursor-pointer transition-colors ${
                 world.isOnline && !canReturnTeamLobby
-                  ? 'bg-[#f5b73d] hover:bg-[#ffc34d] text-[#08101e]'
-                  : 'bg-[#101c36] hover:bg-[#18284a] border border-slate-700/80 text-slate-200'
+                  ? 'bg-[#e59e24] hover:bg-[#f0ae35] text-[#111214] shadow-[0_3px_0_#9a650b]'
+                  : 'bg-[#23252b] hover:bg-[#2d3038] border border-[#363943] text-[#f3efe6]'
               }`}
             >
               {world.isOnline ? 'লবি মেনুতে যাও' : 'মেনুতে ফিরে যাও'}

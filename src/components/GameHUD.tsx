@@ -314,7 +314,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
   return (
     <div className="fixed inset-0 z-10 pointer-events-none select-none">
       {/* Unified Top Dhaka Metro Station Telemetry Bar */}
-      <header className="w-full px-2.5 sm:px-4 py-1.5 sm:py-2 bg-[#060b16]/88 backdrop-blur-md border-b border-[#f5b73d]/25 flex items-center justify-between gap-2 sm:gap-4">
+      <header className="w-full px-2.5 sm:px-4 py-1.5 sm:py-2 bg-[#16171b]/92 backdrop-blur-md border-b border-[#2e313a] flex items-center justify-between gap-2 sm:gap-4">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <div
             className="text-[11px] sm:text-sm font-bold whitespace-nowrap flex items-center gap-1.5 shrink-0 max-w-[125px] sm:max-w-none truncate"
@@ -327,39 +327,39 @@ export const GameHUD: React.FC<GameHUDProps> = ({
             </span>
           </div>
 
-          <span className="hidden sm:inline text-slate-700" aria-hidden="true">|</span>
+          <span className="hidden sm:inline text-[#3c404d]" aria-hidden="true">|</span>
 
           <div className="w-16 min-[420px]:w-24 sm:w-44 md:w-52 shrink-0">
-            <div className="flex justify-between text-[10px] sm:text-[11px] text-slate-300 tabular-nums items-center">
+            <div className="flex justify-between text-[10px] sm:text-[11px] text-[#d5d1c8] tabular-nums items-center">
               <span className="flex items-center gap-1 truncate">
                 {commsJam ? (
                   <>
-                    <Radio className="w-3 h-3 text-red-400 shrink-0" />
-                    <span className="text-red-300 truncate">বিচ্ছিন্ন</span>
+                    <Radio className="w-3 h-3 text-[#e86b5e] shrink-0" />
+                    <span className="text-[#f8c6c1] truncate">বিচ্ছিন্ন</span>
                   </>
                 ) : (
                   <span>কাজ {bn(world.doneTasks)}/{bn(world.totalTasks)}</span>
                 )}
               </span>
-              {!commsJam && <span className="hidden sm:inline text-[#43c07a] font-bold">{bn(progressPct)}%</span>}
+              {!commsJam && <span className="hidden sm:inline text-[#3cc280] font-bold">{bn(progressPct)}%</span>}
             </div>
-            <div className="h-1.5 bg-[#152038] rounded-full overflow-hidden mt-0.5 sm:mt-1">
+            <div className="h-1.5 bg-[#2a2d35] rounded-full overflow-hidden mt-0.5 sm:mt-1">
               <div
-                className={`h-full transition-all duration-300 ${commsJam ? 'bg-red-500/60' : 'bg-[#1f9d63]'}`}
+                className={`h-full transition-all duration-300 ${commsJam ? 'bg-[#d9483b]/70' : 'bg-[#2d9f68]'}`}
                 style={{ width: commsJam ? '100%' : `${progressPct}%` }}
               />
             </div>
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-2 text-xs font-semibold text-slate-200 whitespace-nowrap tabular-nums">
-          <MapPin className="w-3.5 h-3.5 text-[#f5b73d]" />
+        <div className="hidden lg:flex items-center gap-2 text-xs font-semibold text-[#f3efe6] whitespace-nowrap tabular-nums">
+          <MapPin className="w-3.5 h-3.5 text-[#e59e24]" />
           <span>{currentCoach}</span>
-          <span className="text-slate-600" aria-hidden="true">·</span>
-          <TrainFront className="w-3.5 h-3.5 text-[#1f9d63]" />
+          <span className="text-[#625f59]" aria-hidden="true">·</span>
+          <TrainFront className="w-3.5 h-3.5 text-[#2d9f68]" />
           <span>{STATIONS[world.stIdx]}</span>
-          <span className="text-slate-600" aria-hidden="true">·</span>
-          <span className={world.trainSpeed < 0.08 ? 'text-[#f5b73d]' : 'text-slate-300'}>
+          <span className="text-[#625f59]" aria-hidden="true">·</span>
+          <span className={world.trainSpeed < 0.08 ? 'text-[#e59e24]' : 'text-[#d5d1c8]'}>
             {world.trainSpeed < 0.08
               ? 'স্টেশনে থেমেছে'
               : `${bn(Math.round(world.trainSpeed * 84))} কিমি/ঘণ্টা`}
@@ -370,7 +370,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           {world.isOnline && world.matchTimer !== undefined && (
             <span
               className={`font-mono-num text-[11px] sm:text-sm font-bold tabular-nums flex items-center gap-1 px-1.5 py-1 ${
-                world.matchTimer <= 25 ? 'text-red-400' : 'text-[#f5b73d]'
+                world.matchTimer <= 25 ? 'text-[#e86b5e]' : 'text-[#e59e24]'
               }`}
               title="ম্যাচের বাকি সময়"
             >
@@ -385,12 +385,12 @@ export const GameHUD: React.FC<GameHUDProps> = ({
               onClick={() => setSabotageOpen((v) => !v)}
               className={`pointer-events-auto flex items-center gap-1 px-2 py-1.5 rounded-lg border text-[11px] sm:text-xs font-bold cursor-pointer whitespace-nowrap tabular-nums transition-colors ${
                 sabotageOpen
-                  ? 'bg-[#ef5350] border-red-300 text-white'
-                  : 'bg-[#450a0a]/90 border-red-400/70 text-red-100 animate-pulse'
+                  ? 'bg-[#d9483b] border-[#f08076] text-white'
+                  : 'bg-[#3b1210] border-[#d9483b]/75 text-[#fde2df] animate-pulse'
               }`}
               title="সাবোটাজ বিস্তারিত দেখো"
             >
-              <AlertTriangle className="w-3.5 h-3.5 text-[#f5b73d] shrink-0" />
+              <AlertTriangle className="w-3.5 h-3.5 text-[#e59e24] shrink-0" />
               <span>{sabotageChipLabel}</span>
             </button>
           )}
@@ -400,12 +400,12 @@ export const GameHUD: React.FC<GameHUDProps> = ({
             onClick={() => setTasksOpen((v) => !v)}
             className={`pointer-events-auto flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-lg border text-xs font-semibold cursor-pointer whitespace-nowrap transition-colors ${
               tasksOpen
-                ? 'bg-[#f5b73d] border-[#f5b73d] text-[#060b16]'
-                : 'bg-[#0e172c] border-slate-700/80 text-slate-100 hover:border-[#f5b73d]/60'
+                ? 'bg-[#e59e24] border-[#e59e24] text-[#111214]'
+                : 'bg-[#23252b] border-[#363943] text-[#f3efe6] hover:border-[#e59e24]'
             }`}
             title={me.role === 'faker' ? 'ভান করার কাজ' : 'আমার কাজ'}
           >
-            <ClipboardList className={`w-3.5 h-3.5 ${tasksOpen ? 'text-[#060b16]' : 'text-[#f5b73d]'}`} />
+            <ClipboardList className={`w-3.5 h-3.5 ${tasksOpen ? 'text-[#111214]' : 'text-[#e59e24]'}`} />
             <span className="hidden sm:inline">কাজ</span>
           </button>
 
@@ -414,50 +414,50 @@ export const GameHUD: React.FC<GameHUDProps> = ({
             onClick={() => setMiniMapOpen((v) => !v)}
             className={`pointer-events-auto flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-lg border text-xs font-semibold cursor-pointer whitespace-nowrap transition-colors ${
               miniMapOpen
-                ? 'bg-[#f5b73d] border-[#f5b73d] text-[#060b16]'
-                : 'bg-[#0e172c] border-slate-700/80 text-slate-100 hover:border-[#f5b73d]/60'
+                ? 'bg-[#e59e24] border-[#e59e24] text-[#111214]'
+                : 'bg-[#23252b] border-[#363943] text-[#f3efe6] hover:border-[#e59e24]'
             }`}
             title="মিনিম্যাপ ও অবস্থান দেখো"
           >
-            <Radar className={`w-3.5 h-3.5 ${miniMapOpen ? 'text-[#060b16]' : 'text-[#43c07a]'}`} />
+            <Radar className={`w-3.5 h-3.5 ${miniMapOpen ? 'text-[#111214]' : 'text-[#3cc280]'}`} />
             <span className="hidden md:inline">রাডার</span>
           </button>
 
           <button
             type="button"
             onClick={onOpenMap}
-            className="pointer-events-auto flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-lg bg-[#0e172c] border border-slate-700/80 text-slate-100 text-xs font-semibold hover:border-[#f5b73d]/60 cursor-pointer whitespace-nowrap"
+            className="pointer-events-auto flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-lg bg-[#23252b] border border-[#363943] text-[#f3efe6] text-xs font-semibold hover:border-[#e59e24] cursor-pointer whitespace-nowrap"
             title="ট্রেনের ম্যাপ (M)"
           >
-            <MapIcon className="w-3.5 h-3.5 text-[#f5b73d]" />
+            <MapIcon className="w-3.5 h-3.5 text-[#e59e24]" />
             <span className="hidden sm:inline">ম্যাপ</span>
           </button>
 
           <button
             type="button"
             onClick={onToggleSound}
-            className="pointer-events-auto p-1.5 rounded-lg bg-[#0e172c] border border-slate-700/80 text-slate-100 hover:border-[#f5b73d]/60 cursor-pointer"
+            className="pointer-events-auto p-1.5 rounded-lg bg-[#23252b] border border-[#363943] text-[#f3efe6] hover:border-[#e59e24] cursor-pointer"
             aria-label="সাউন্ড"
           >
-            {soundOn ? <Volume2 className="w-4 h-4 text-[#f5b73d]" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
+            {soundOn ? <Volume2 className="w-4 h-4 text-[#e59e24]" /> : <VolumeX className="w-4 h-4 text-[#a19e96]" />}
           </button>
         </div>
       </header>
 
-      {/* Expandable Left Drawer: Minimap + Tasks (Hidden by default so playable train stays clean) */}
+      {/* Expandable Left Drawer: Minimap + Tasks */}
       {(miniMapOpen || tasksOpen) && (
         <div className="absolute top-12 sm:top-13 left-2.5 sm:left-3 flex flex-col gap-2 max-w-[calc(100vw-20px)] sm:max-w-[300px] z-20">
           {miniMapOpen && (
-            <div className="pointer-events-auto bg-[#060b16]/90 backdrop-blur-md border border-[#f5b73d]/30 rounded-xl p-2 space-y-1.5 shadow-xl">
-              <div className="flex items-center justify-between text-[11px] font-semibold text-[#f5b73d]">
+            <div className="pointer-events-auto bg-[#1a1b1f]/95 backdrop-blur-md border border-[#343741] rounded-xl p-2 space-y-1.5 shadow-xl">
+              <div className="flex items-center justify-between text-[11px] font-semibold text-[#e59e24]">
                 <span className="truncate">
-                  {currentCoach} <span className="text-slate-500">·</span>{' '}
-                  <span className="text-slate-200">{STATIONS[world.stIdx]}</span>
+                  {currentCoach} <span className="text-[#625f59]">·</span>{' '}
+                  <span className="text-[#f3efe6]">{STATIONS[world.stIdx]}</span>
                 </span>
                 <button
                   type="button"
                   onClick={() => setMiniMapOpen(false)}
-                  className="p-0.5 text-slate-400 hover:text-white cursor-pointer"
+                  className="p-0.5 text-[#a19e96] hover:text-white cursor-pointer"
                   aria-label="রাডার বন্ধ করো"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -468,19 +468,19 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                 width={560}
                 height={44}
                 onClick={onOpenMap}
-                className="w-60 sm:w-72 h-6 rounded-lg bg-[#040812] border border-slate-700/70 cursor-pointer"
+                className="w-60 sm:w-72 h-6 rounded-lg bg-[#111214] border border-[#2e313a] cursor-pointer"
               />
             </div>
           )}
 
           {tasksOpen && (
-            <div className="pointer-events-auto bg-[#060b16]/90 backdrop-blur-md border border-slate-700/70 rounded-xl px-3 py-2 text-xs shadow-xl">
-              <div className="flex items-center justify-between font-bold text-[#f5b73d] pb-1.5 border-b border-slate-800">
+            <div className="pointer-events-auto bg-[#1a1b1f]/95 backdrop-blur-md border border-[#343741] rounded-xl px-3 py-2 text-xs shadow-xl">
+              <div className="flex items-center justify-between font-bold text-[#e59e24] pb-1.5 border-b border-[#2e313a]">
                 <span>{me.role === 'faker' ? 'ভান করার কাজ' : 'আমার কাজ'}</span>
                 <button
                   type="button"
                   onClick={() => setTasksOpen(false)}
-                  className="p-0.5 text-slate-400 hover:text-white cursor-pointer"
+                  className="p-0.5 text-[#a19e96] hover:text-white cursor-pointer"
                   aria-label="কাজের তালিকা বন্ধ করো"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -489,26 +489,26 @@ export const GameHUD: React.FC<GameHUDProps> = ({
 
               <div className="mt-1.5 space-y-1.5 leading-snug max-h-[45dvh] overflow-y-auto metro-scroll">
                 {commsJam ? (
-                  <div className="text-red-400">যোগাযোগ জ্যাম! সিকিউরিটিতে ঠিক করো।</div>
+                  <div className="text-[#e86b5e]">যোগাযোগ জ্যাম! সিকিউরিটিতে ঠিক করো।</div>
                 ) : (
                   me.tasks.map((t, idx) => (
                     <div
                       key={idx}
                       className={`flex items-start gap-1.5 ${
-                        t.done ? 'text-[#43c07a] line-through opacity-65' : 'text-slate-200'
+                        t.done ? 'text-[#3cc280] line-through opacity-65' : 'text-[#f3efe6]'
                       }`}
                     >
                       {t.done ? (
-                        <Check className="w-3.5 h-3.5 shrink-0 mt-0.5 text-[#43c07a]" />
+                        <Check className="w-3.5 h-3.5 shrink-0 mt-0.5 text-[#3cc280]" />
                       ) : (
-                        <Circle className="w-2.5 h-2.5 shrink-0 mt-1 text-[#f5b73d]" />
+                        <Circle className="w-2.5 h-2.5 shrink-0 mt-1 text-[#e59e24]" />
                       )}
                       <span>
                         {t.spot.label}{' '}
                         {t.spot.hard && !t.done && (
-                          <span className="text-[10px] font-bold text-[#f5b73d]">[কঠিন] </span>
+                          <span className="text-[10px] font-bold text-[#e59e24]">[কঠিন] </span>
                         )}
-                        — <span className="text-slate-400">{COACH_NAMES[t.spot.coach].split(' ')[0]}</span>
+                        — <span className="text-[#a19e96]">{COACH_NAMES[t.spot.coach].split(' ')[0]}</span>
                       </span>
                     </div>
                   ))
@@ -519,15 +519,15 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         </div>
       )}
 
-      {/* Expandable Sabotage Detail Card (Only visible when user clicks the top-bar emergency chip) */}
+      {/* Expandable Sabotage Detail Card */}
       {hasSabotageAlert && sabotageOpen && (
-        <div className="pointer-events-auto absolute top-12 sm:top-13 right-2.5 sm:right-3 max-w-xs bg-[#2c090e]/95 backdrop-blur-md border border-red-400/70 rounded-xl px-3.5 py-2.5 text-xs font-bold text-white shadow-xl space-y-1.5 z-20">
-          <div className="flex items-center justify-between gap-3 text-[11px] text-[#f5b73d] border-b border-red-400/25 pb-1">
+        <div className="pointer-events-auto absolute top-12 sm:top-13 right-2.5 sm:right-3 max-w-xs bg-[#2c1211]/95 backdrop-blur-md border border-[#d9483b]/75 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#f3efe6] shadow-xl space-y-1.5 z-20">
+          <div className="flex items-center justify-between gap-3 text-[11px] text-[#e59e24] border-b border-[#d9483b]/30 pb-1">
             <span>জরুরি সতর্কতা</span>
             <button
               type="button"
               onClick={() => setSabotageOpen(false)}
-              className="text-slate-300 hover:text-white cursor-pointer"
+              className="text-[#d5d1c8] hover:text-white cursor-pointer"
               aria-label="সতর্কতা লুকাও"
             >
               <X className="w-3.5 h-3.5" />
@@ -535,32 +535,32 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           </div>
           {world.sabotage.active === 'brakes' && (
             <div className="flex items-center gap-1.5 tabular-nums">
-              <AlertTriangle className="w-4 h-4 text-[#f5b73d] shrink-0" />
+              <AlertTriangle className="w-4 h-4 text-[#e59e24] shrink-0" />
               <span>জরুরি ব্রেক ফেইল! বাকি {bn(Math.max(0, Math.ceil(world.sabotage.timer)))} সেকেন্ড</span>
             </div>
           )}
           {world.sabotage.active === 'lights' && (
             <div className="flex items-center gap-1.5">
-              <LightbulbOff className="w-4 h-4 text-[#f5b73d] shrink-0" />
+              <LightbulbOff className="w-4 h-4 text-[#e59e24] shrink-0" />
               <span>লাইট বন্ধ! ইলেকট্রিক্যালে গিয়ে ব্রেকার ঠিক করো</span>
             </div>
           )}
           {world.sabotage.active === 'comms' && (
             <div className="flex items-center gap-1.5">
-              <Radio className="w-4 h-4 text-[#f5b73d] shrink-0" />
+              <Radio className="w-4 h-4 text-[#e59e24] shrink-0" />
               <span>যোগাযোগ বিচ্ছিন্ন! সিকিউরিটিতে রাউটার ঠিক করো</span>
             </div>
           )}
           {doorsLockedLeft > 0 && (
             <div className="flex items-center gap-1.5 tabular-nums">
-              <DoorClosed className="w-4 h-4 text-[#f5b73d] shrink-0" />
+              <DoorClosed className="w-4 h-4 text-[#e59e24] shrink-0" />
               <span>কোচের দরজা লক: {bn(doorsLockedLeft)} সে.</span>
             </div>
           )}
         </div>
       )}
 
-      {/* Active Player Status Effects Strip (Dhaka Metro Telemetry) */}
+      {/* Active Player Status Effects Strip */}
       {statusItems.length > 0 && (
         <div
           aria-live="polite"
@@ -578,11 +578,11 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                   <span className="font-bold" style={{ color: st.accentColor }}>
                     {st.label}
                   </span>
-                  <span className="text-slate-500" aria-hidden="true">·</span>
-                  <span className="text-[11px] font-medium text-slate-200">{st.detail}</span>
+                  <span className="text-[#625f59]" aria-hidden="true">·</span>
+                  <span className="text-[11px] font-medium text-[#f3efe6]">{st.detail}</span>
                 </div>
                 {st.pct !== undefined && (
-                  <div className="h-1 bg-slate-900/90 rounded-sm overflow-hidden mt-1">
+                  <div className="h-1 bg-[#111214]/90 rounded-sm overflow-hidden mt-1">
                     <div
                       className="h-full transition-all duration-100"
                       style={{ width: `${st.pct}%`, backgroundColor: st.accentColor }}
@@ -597,7 +597,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
 
       {/* Center Station Announcement Toast */}
       {world.t < world.toastUntil && world.toastText && (
-        <div className="absolute left-1/2 top-[22%] -translate-x-1/2 max-w-[88vw] text-center bg-[#060b16]/94 backdrop-blur-md border border-[#f5b73d]/70 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-2xl">
+        <div className="absolute left-1/2 top-[22%] -translate-x-1/2 max-w-[88vw] text-center bg-[#16171b]/95 backdrop-blur-md border border-[#e59e24]/65 rounded-xl px-4 py-2 text-sm font-semibold text-[#f3efe6] shadow-2xl">
           {world.toastText}
         </div>
       )}
@@ -626,7 +626,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
             <button
               type="button"
               onClick={() => onCycleVent(-1)}
-              className="min-h-[48px] px-4 py-3 rounded-2xl bg-[#1e293b] border border-slate-500 text-white font-bold shadow-lg cursor-pointer flex items-center gap-1"
+              className="min-h-[48px] px-4 py-3 rounded-xl bg-[#23252b] border border-[#3c404d] text-[#f3efe6] font-bold shadow-[0_3px_0_#0e0f12] cursor-pointer flex items-center gap-1"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>আগের ভেন্ট</span>
@@ -634,14 +634,14 @@ export const GameHUD: React.FC<GameHUDProps> = ({
             <button
               type="button"
               onClick={onToggleVent}
-              className="min-h-[48px] px-5 py-3 rounded-2xl bg-[#ef5350] text-white font-bold shadow-lg cursor-pointer"
+              className="min-h-[48px] px-5 py-3 rounded-xl bg-[#d9483b] text-white font-bold shadow-[0_3px_0_#7c221a] cursor-pointer"
             >
               ভেন্ট থেকে বের হও (V)
             </button>
             <button
               type="button"
               onClick={() => onCycleVent(1)}
-              className="min-h-[48px] px-4 py-3 rounded-2xl bg-[#1e293b] border border-slate-500 text-white font-bold shadow-lg cursor-pointer flex items-center gap-1"
+              className="min-h-[48px] px-4 py-3 rounded-xl bg-[#23252b] border border-[#3c404d] text-[#f3efe6] font-bold shadow-[0_3px_0_#0e0f12] cursor-pointer flex items-center gap-1"
             >
               <span>পরের ভেন্ট</span>
               <ChevronRight className="w-4 h-4" />
@@ -655,7 +655,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                   type="button"
                   onClick={onOpenSabotage}
                   disabled={!!world.sabotage.active || world.sabotage.cooldown > 0}
-                  className="pointer-events-auto min-h-[46px] px-4 py-2.5 rounded-2xl bg-[#7f1d1d] border border-red-400/50 text-white text-sm font-bold shadow-lg disabled:opacity-45 cursor-pointer tabular-nums flex items-center gap-1.5"
+                  className="pointer-events-auto min-h-[46px] px-4 py-2.5 rounded-xl bg-[#5c1b18] border border-[#d9483b]/60 text-white text-sm font-bold shadow-[0_3px_0_#2b0b09] disabled:opacity-45 cursor-pointer tabular-nums flex items-center gap-1.5"
                 >
                   <Flame className="w-4 h-4" />
                   <span>
@@ -669,7 +669,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                   type="button"
                   onClick={onToggleVent}
                   disabled={isStunned}
-                  className="pointer-events-auto min-h-[46px] px-4 py-2.5 rounded-2xl bg-[#334155] border border-slate-400/60 text-white text-sm font-bold shadow-lg disabled:opacity-45 cursor-pointer flex items-center gap-1.5"
+                  className="pointer-events-auto min-h-[46px] px-4 py-2.5 rounded-xl bg-[#2d3039] border border-[#474b59] text-[#f3efe6] text-sm font-bold shadow-[0_3px_0_#0e0f12] disabled:opacity-45 cursor-pointer flex items-center gap-1.5"
                 >
                   <Wind className="w-4 h-4" />
                   <span>{isStunned ? 'স্তব্ধ' : 'ভেন্ট (V)'}</span>
@@ -681,8 +681,10 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                   type="button"
                   onClick={onAbility}
                   disabled={abilityDisabled}
-                  className={`pointer-events-auto min-h-[48px] px-4 py-2.5 rounded-2xl text-sm font-bold shadow-lg disabled:opacity-40 cursor-pointer tabular-nums flex items-center gap-1.5 ${
-                    me.role === 'faker' ? 'bg-[#ef5350] text-white' : 'bg-[#3b82f6] text-white'
+                  className={`pointer-events-auto min-h-[48px] px-4 py-2.5 rounded-xl text-sm font-bold disabled:opacity-40 cursor-pointer tabular-nums flex items-center gap-1.5 ${
+                    me.role === 'faker'
+                      ? 'bg-[#d9483b] text-white shadow-[0_3px_0_#7c221a]'
+                      : 'bg-[#357bc4] text-white shadow-[0_3px_0_#1c4875]'
                   }`}
                 >
                   {me.role === 'faker' ? (
@@ -707,7 +709,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                   type="button"
                   onClick={onReport}
                   disabled={isStunned}
-                  className="pointer-events-auto min-h-[54px] px-5 py-3 rounded-2xl bg-[#ef5350] text-white text-base font-bold shadow-xl animate-pulse disabled:opacity-45 disabled:animate-none cursor-pointer flex items-center gap-2"
+                  className="pointer-events-auto min-h-[54px] px-5 py-3 rounded-xl bg-[#d9483b] text-white text-base font-bold shadow-[0_3px_0_#7c221a] animate-pulse disabled:opacity-45 disabled:animate-none cursor-pointer flex items-center gap-2"
                 >
                   <Megaphone className="w-5 h-5" />
                   <span>{isStunned ? 'স্তব্ধ' : 'ব্যাগ রিপোর্ট (R)'}</span>
@@ -725,7 +727,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                   onPointerUp={onUseUp}
                   onPointerLeave={onUseUp}
                   onPointerCancel={onUseUp}
-                  className="pointer-events-auto min-h-[48px] sm:min-h-[58px] min-w-[116px] sm:min-w-[140px] max-w-[54vw] px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-[#f5b73d] text-[#0c111d] text-xs sm:text-base font-bold shadow-xl active:scale-95 transition-transform disabled:opacity-45 cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2"
+                  className="pointer-events-auto min-h-[48px] sm:min-h-[58px] min-w-[116px] sm:min-w-[140px] max-w-[54vw] px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-[#e59e24] text-[#111214] text-xs sm:text-base font-bold shadow-[0_3px_0_#9a650b] active:translate-y-[1px] transition-transform disabled:opacity-45 cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2"
                 >
                   <useAction.Icon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                   <span className="truncate">{isStunned ? `স্তব্ধ (${bn(myStatus.stunnedLeft.toFixed(1))}সে)` : useAction.label}</span>

@@ -389,7 +389,7 @@ export default function App() {
   void worldVersion;
 
   return (
-    <div className="relative w-full h-full overflow-hidden bg-[#070b14]">
+    <div className="relative w-full h-full overflow-hidden bg-[#111214]">
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full block" />
 
       {!world && (
